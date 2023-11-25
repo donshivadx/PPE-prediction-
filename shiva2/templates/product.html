@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Management</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/styler.css' %}" rel="stylesheet">
+
+  <style>
+    /* Styling for the faded table */
+    .styled-table {
+      width: 80%;
+      margin: 50px auto; /* Adjusted margin for centering */
+      border-collapse: collapse;
+      border-spacing: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+      text-align: middle;
+      background-color: rgba(19, 41, 75, 0.7); /* Transparent blue background */
+      color: rgba(255, 255, 255, 0.9); /* Transparent white text */
+      border-bottom: 1px solid #90caf9; /* Border between rows */
+    }
+
+    .styled-table th {
+      background-color: rgba(0, 0, 0, 0.7); /* Transparent black background for headers */
+      color: white;
+    }
+
+    /* Styling for the centered container */
+    .center-container {
+      margin: 200px auto;
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">MANAGEMENT</a></h1>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">PRODUCT</a></li>
+          <li><a class="nav-link scrollto" href="/">HOME</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url({% static 'assets/img/slide/slide-1.jpg' %});">
+            <div class="center-container">
+              <h1 style="color: #ecf0f1">Details</h1>
+              <table class="styled-table">
+                <tr>
+                  <th><h3>Username</h3></th>
+                  <th><h3>Organization</h3></th>
+                  <th><h3>Phone</h3></th>
+                  <th><h3>Email</h3></th>
+                  <th><h3>Order</h3></th>
+                  <th><h3>Type</h3></th>
+                  <th><h3>Customization</h3></th>
+                  <th><h3>Product</h3></th>
+                </tr>
+                {% for detail in details %}
+                  <tr>
+                    <td>{{ detail.name }}</td>
+                    <td>{{ detail.organize }}</td>
+                    <td>{{ detail.ph }}</td>
+                    <td>{{ detail.mail }}</td>
+                    <td>{{ detail.orders }}</td>
+                    <td>{{ detail.types }}</td>
+                    <td>{{ detail.product_customization }}</td>
+                    <td>{{ detail.product }}</td>
+                  </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <!-- ... (your existing remaining code) ... -->
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/mainr.js' %}"></script>
+
+</body>
+
+</html>

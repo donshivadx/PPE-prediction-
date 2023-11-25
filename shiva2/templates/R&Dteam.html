@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>R&Dteam</title>
+</head>
+<body><h1>PASSIVE AGGRESSIVE ALGORITHM</h1>
+<p>"This website is centered around the choices you make when ordering a PPE suit. It guides you through the selection process and provides recommendations for the best suit, including both its common name and technical specifications.</p>
+
+<p>This website operates on the principle of PAC (Passive Aggressive Classifier) with a random choice, which is trained based on our own built dataset</p>
+
+<p><code>
+import pandas as pd<br>
+from sklearn.feature_extraction.text import TfidfVectorizer<br>
+from sklearn.linear_model import PassiveAggressiveClassifier<br>
+from sklearn.metrics import accuracy_score, confusion_matrix<br>
+from sklearn.model_selection import train_test_split<br>
+
+df = pd.read_csv(r"C:\Users\shiva\Desktop\protection_suits_dataset.csv")<br>
+
+df['Requirement'].fillna(df['Requirement'].sample().values[0], inplace=True)<br>
+
+X_train, X_test, y_train, y_test = train_test_split(df['Description'], df['Requirement'], test_size=0.2, random_state=42)<br>
+
+tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)<br>
+tfidf_X_train = tfidf_vectorizer.fit_transform(X_train)<br>
+tfidf_X_test = tfidf_vectorizer.transform(X_test)<br>
+
+pac_classifier = PassiveAggressiveClassifier(max_iter=50)<br>
+pac_classifier.fit(tfidf_X_train, y_train)<br>
+
+order = input("Enter the order (e.g., bulletproof): ")<br>
+suit_type = input("Enter the type of suit (e.g., Vest): ")<br>
+customization = input("Enter the customization (e.g., Air conditioning suit): ")<br>
+
+user_input_description = f"{order} {suit_type} with {customization}"<br>
+
+tfidf_user_input = tfidf_vectorizer.transform([user_input_description])<br>
+
+prediction = pac_classifier.predict(tfidf_user_input)<br>
+
+accuracy = accuracy_score(y_test, pac_classifier.predict(tfidf_X_test))<br>
+confusion = confusion_matrix(y_test, pac_classifier.predict(tfidf_X_test))<br>
+
+print(f"The model predicts that the well-suited requirement is: {prediction[0]}")<br>
+print(f"Accuracy: {accuracy * 100:.2f}%")<br>
+print(f"Confusion Matrix:\n{confusion}")<br>
+</code></p>
+
+</body>
+</html>
+
+
+</body>
+</html>
